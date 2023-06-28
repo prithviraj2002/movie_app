@@ -9,10 +9,11 @@ import 'package:trending/model/show_result.dart';
 
 class ApiFunctions{
 
-  static Future<List<MovieResults>> getMovies() async{
+  static Future<List<MovieResults>> getMovies({int page = 1}) async{
     List<MovieResults> results = [];
+    final p = page.toString();
     try{
-      final response = await http.get(Uri.parse(ApiUrl.movieApi));
+      final response = await http.get(Uri.parse(ApiUrl.movieApi+p));
       final data = jsonDecode(response.body);
       for(dynamic movie in data["results"]){
         results.add(MovieResults.fromJson(movie));
@@ -23,10 +24,11 @@ class ApiFunctions{
     }
   }
 
-  static Future<List<ShowResults>> getShows() async{
+  static Future<List<ShowResults>> getShows({int page = 1}) async{
     List<ShowResults> results = [];
+    final p = page.toString();
     try{
-      final response = await http.get(Uri.parse(ApiUrl.tvApi));
+      final response = await http.get(Uri.parse(ApiUrl.tvApi+p));
       final data = jsonDecode(response.body);
       for(dynamic person in data["results"]){
         results.add(ShowResults.fromJson(person));

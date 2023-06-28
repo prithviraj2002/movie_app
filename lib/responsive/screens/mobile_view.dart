@@ -31,14 +31,20 @@ class _MobileScreenState extends State<MobileScreen> {
           child: ListView(
             children: [
               ListTile(
-                title: const Text("Movies"),
+                title: Text(
+                    "Movies",
+                  style: screen == 1? const TextStyle(color: Colors.brown, fontSize: 20) : const TextStyle(color: Colors.black),
+                ),
                 onTap: (){
                   setScreen(1);
                   Navigator.of(context).pop();
                 },
               ),
               ListTile(
-                title: const Text("Shows"),
+                title: Text(
+                    "Shows",
+                  style: screen == 2? const TextStyle(color: Colors.brown, fontSize: 20) : const TextStyle(color: Colors.black),
+                ),
                 onTap: (){
                   setScreen(2);
                   Navigator.of(context).pop();
